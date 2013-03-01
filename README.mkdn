@@ -40,7 +40,7 @@ And make sure to remove sidekiq/capistrano related settings from `config/deploy.
     set :sidekiq_pid, "#{current_path}/tmp/pids/sidekiq.pid"
     set :sidekiq_processes, 1
 
-### Managing DJ with God
+### Managing Sidekiq with God
 
 This plugin also provides the following Capistrano tasks:
 
@@ -49,7 +49,7 @@ This plugin also provides the following Capistrano tasks:
     cap god:sidekiq:restart
     cap god:sidekiq:status
 
-We recommend having DJ restart on deploy to reload code changes:
+We recommend having Sidekiq restart on deploy to reload code changes:
 
     # config/deploy.rb
     after 'god:restart', 'god:sidekiq:restart'
