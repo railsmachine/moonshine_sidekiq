@@ -57,3 +57,7 @@ We recommend having Sidekiq restart on deploy to reload code changes:
 ### Deploying
 
 That's it. Deploy and done!
+
+
+***
+Unless otherwise specified, all content copyright &copy; 2014, [Rails Machine, LLC](http://railsmachine.com)
