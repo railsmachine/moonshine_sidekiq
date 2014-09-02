@@ -9,8 +9,8 @@
     w.env      = { 'RAILS_ENV' => RAILS_ENV, 'HOME' => '/home/<%= configuration[:user] %>' }
     w.dir      = RAILS_ROOT
     w.pid_file = "#{RAILS_ROOT}/pids/#{w.name}.pid"
-    w.start    = "<%= 'bundle exec' if File.exist?(configuration[:deploy_to] + '/current/Gemfile') %> sidekiq --environment #{RAILS_ENV} --config #{RAILS_ROOT}/config/sidekiq.yml --pidfile #{w.pid_file} --daemon --logfile #{w.log}"
-    w.stop     = "<%= 'bundle exec' if File.exist?(configuration[:deploy_to] + '/current/Gemfile') %> sidekiqctl stop #{w.pid_file}"
+    w.start    = "<%= 'bundle exec' if File.exist?(File.join(rails_root, 'Gemfile')) %> sidekiq --environment #{RAILS_ENV} --config #{RAILS_ROOT}/config/sidekiq.yml --pidfile #{w.pid_file} --daemon --logfile #{w.log}"
+    w.stop     = "<%= 'bundle exec' if File.exist?(File.join(rails_root, 'Gemfile')) %> sidekiqctl stop #{w.pid_file}"
 
     # determine the state on startup
     w.transition(:init, { true => :up, false => :start }) do |on|
